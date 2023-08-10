@@ -1,4 +1,7 @@
 # Java EDD Example
+This example runs some java applications that communicate through kafka realizing an event driven microservices mesh.
+
+A producer sends 1 million events in few seconds and the consumers consumes them realtime without skipping a single one of them.
 
 ## How to run
 ```

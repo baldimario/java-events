@@ -26,7 +26,7 @@ public class App
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
         log.debug("Sending message...");
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1000000; i++) {
             int topic_index = 1;
             if (i % 2 == 0) {
                 topic_index = 2;
