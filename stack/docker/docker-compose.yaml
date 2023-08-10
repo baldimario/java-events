@@ -26,6 +26,38 @@ services:
         soft: 65536
         hard: 65536
 
+  consumer1:
+    build:
+      context: ../../
+      dockerfile: ./stack/docker/java/Dockerfile
+      args:
+        - JAR=job
+        - VERSION=0.1
+    volumes:
+      - ../../app/consumer1/:/app
+    depends_on:
+      - kafka
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  consumer2:
+    build:
+      context: ../../
+      dockerfile: ./stack/docker/java/Dockerfile
+      args:
+        - JAR=job
+        - VERSION=0.1
+    volumes:
+      - ../../app/consumer2/:/app
+    depends_on:
+      - kafka
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
   zookeeper:
     image: bitnami/zookeeper:latest
     environment:
