@@ -27,8 +27,16 @@ public class App
 
         log.debug("Sending message...");
         for (int i = 0; i < 10; i++) {
+            int topic_index = 1;
+            if (i % 2 == 0) {
+                topic_index = 2;
+            }
+            String topic_name = "topic" +  topic_index;
+            String event = "event " + i;
+            log.info("Sending event: " + event + " to topic: " + topic_name);
             ProducerRecord<String, String> producerRecord =
-                    new ProducerRecord<>("topic1", "event " + i);
+                    new ProducerRecord<>(topic_name, event);
+
             producer.send(producerRecord);
         }
         producer.flush();
